@@ -2,6 +2,134 @@
 
 <PageTitle>Home</PageTitle>
 
-<h1>Brett Affolder</h1>
+<div class="portfolio">
 
-UNDER CONSTRUCTION
+    <nav class="header">
+        <div class="header-left">
+            <a href="#" class="brand">
+                <span class="first-name">@FirstName</span><span class="last-name">@LastName</span>
+            </a>
+        </div>
+        <div class="header-center">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+        </div>
+        <div class="header-right">
+            <a href="@GitHubUrl" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            </a>
+            <a href="@EmailLink" aria-label="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-image-wrapper">
+            <div class="placeholder-avatar">
+                <img src="@AvatarUrl" alt="Profile photo" class="avatar" />
+                <div class="avatar-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+            </div>
+        </div>
+        <p class="tagline">@Tagline</p>
+    </header>
+
+    <section id="about" class="section">
+        <h2>About</h2>
+        <p>@AboutText</p>
+    </section>
+
+    <section id="skills" class="section">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            @foreach (var skill in Skills)
+            {
+                <div class="skill-card">
+                    <span class="skill-icon">@skill.Icon</span>
+                    <strong>@skill.Name</strong>
+                    <span class="skill-level">@skill.Level</span>
+                </div>
+            }
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            @foreach (var project in Projects)
+            {
+                <article class="project-card">
+                    <h3>@project.Title</h3>
+                    <p>@project.Description</p>
+                    <div class="tech-stack">
+                        @foreach (var tech in project.Technologies)
+                        {
+                            <span class="tech-tag">@tech</span>
+                        }
+                    </div>
+                    <div class="project-links">
+                        @if (!string.IsNullOrWhiteSpace(project.LiveUrl))
+                        {
+                            <a href="@project.LiveUrl" target="_blank" rel="noopener">Live ↗</a>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(project.RepoUrl))
+                        {
+                            <a href="@project.RepoUrl" target="_blank" rel="noopener">Code ↗</a>
+                        }
+                    </div>
+                </article>
+            }
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; @DateTime.Now.Year @Name</p>
+    </footer>
+</div>
+
+@code {
+    private string FirstName { get; set; } = "Brett";
+    private string LastName { get; set; } = "Affolder";
+    private string AvatarUrl { get; set; } = "";
+    private string Tagline { get; set; } = ".NET developer with 10+ years experience.";
+    private string Email { get; set; } = "contact@brettaffolder.com";
+    private string GitHubUrl { get; set; } = "https://github.com/brettaffolder";
+    private string AboutText { get; set; } = """
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    """;
+
+    private string Name => $"{FirstName} {LastName}";
+    private string EmailLink => $"mailto:{Email}";
+
+    private List<Skill> Skills { get; set; } =
+    [
+        new("WinForms", "💻", "Advanced"),
+        new("WPF", "💻", "Advanced"),
+        new("UWP", "💻", "Advanced"),
+        new("WinUI", "💻", "Advanced"),
+        new("Blazor", "💻", "Advanced"),
+        new("MAUI", "💻", "Advanced")
+    ];
+
+    private List<Project> Projects { get; set; } =
+    [
+        new("Website", "Personal portfolio website project", ["Blazor"], "https://brettaffolder.com", "https://github.com/brettaffolder/website"),
+        new("Time Clock", "Demo time clock project", ["MAUI"], string.Empty, "https://github.com/brettaffolder/time-clock"),
+        new("Asteroids", "Fun asteroids game project", ["MonoGame"], string.Empty, "https://github.com/brettaffolder/asteroids-monogame")
+    ];
+
+    private record Skill(
+        string Name,
+        string Icon,
+        string Level);
+
+    private record Project(
+        string Title,
+        string Description,
+        List<string> Technologies,
+        string LiveUrl,
+        string RepoUrl);
+}
