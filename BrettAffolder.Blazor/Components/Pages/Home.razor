@@ -98,7 +98,9 @@
     private string Email { get; set; } = "contact@brettaffolder.com";
     private string GitHubUrl { get; set; } = "https://github.com/brettaffolder";
     private string AboutText { get; set; } = """
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Software developer with 10+ years of experience designing and implementing custom business systems 
+    across manufacturing environments. Specializes in full-stack .NET development, from database 
+    architecture to front-end interfaces. Proven track record of building end-to-end solutions. 
     """;
 
     private string Name => $"{FirstName} {LastName}";
@@ -116,9 +118,9 @@
 
     private List<Project> Projects { get; set; } =
     [
-        new("Website", "Personal portfolio website project", ["Blazor"], "https://brettaffolder.com", "https://github.com/brettaffolder/website"),
-        new("Time Clock", "Demo time clock project", ["MAUI"], string.Empty, "https://github.com/brettaffolder/time-clock"),
-        new("Asteroids", "Fun asteroids game project", ["MonoGame"], string.Empty, "https://github.com/brettaffolder/asteroids-monogame")
+        new("Portfolio", "Personal portfolio website", [".NET", "C#", "HTML", "CSS", "Blazor"], "https://brettaffolder.com", "https://github.com/brettaffolder/website"),
+        new("Time Clock", "Demo time clock app", [".NET", "C#", "XAML", "MAUI"], string.Empty, "https://github.com/brettaffolder/time-clock"),
+        new("Asteroids", "Fun asteroids game", [".NET", "C#", "MonoGame"], string.Empty, "https://github.com/brettaffolder/asteroids-monogame")
     ];
 
     private record Skill(
