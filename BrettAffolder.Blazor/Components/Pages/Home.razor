@@ -44,17 +44,23 @@
     </section>
 
     <section id="skills" class="section">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-            @foreach (var skill in Skills)
-            {
-                <div class="skill-card">
-                    <span class="skill-icon">@skill.Icon</span>
-                    <strong>@skill.Name</strong>
-                    <span class="skill-level">@skill.Level</span>
+        <h2>Technical Skills</h2>
+        @foreach (var category in SkillCategories)
+        {
+            <div class="skill-category">
+                <h3 class="skill-category-title">@category.Name</h3>
+                <div class="skills-grid">
+                    @foreach (var skill in category.Skills)
+                    {
+                        <div class="skill-card">
+                            <span class="skill-icon">@skill.Icon</span>
+                            <strong>@skill.Name</strong>
+                            <span class="skill-level">@skill.Level</span>
+                        </div>
+                    }
                 </div>
-            }
-        </div>
+            </div>
+        }
     </section>
 
     <section id="projects" class="section">
@@ -106,7 +112,6 @@
                     title="Brett Affolder — Resume"
                     loading="lazy">
                 Your browser does not support embedded PDFs.
-                @* <a href="@ResumePath">Click here to view the resume.</a> *@
             </iframe>
         </div>
     </section>
@@ -133,14 +138,47 @@
     private string Name => $"{FirstName} {LastName}";
     private string EmailLink => $"mailto:{Email}";
 
-    private List<Skill> Skills { get; set; } =
+    private List<SkillCategory> SkillCategories { get; set; } =
     [
-        new("WinForms", "💻", "Advanced"),
-        new("WPF", "💻", "Advanced"),
-        new("UWP", "💻", "Advanced"),
-        new("WinUI", "💻", "Advanced"),
-        new("Blazor", "💻", "Advanced"),
-        new("MAUI", "💻", "Advanced")
+        new("Languages",
+        [
+            new("C#", "💬", "Expert"),
+            new("Visual Basic", "💬", "Proficient"),
+            new("XAML", "💬", "Expert"),
+            new("SQL", "💬", "Proficient")
+        ]),
+
+        new("Frameworks",
+        [
+            new("WinForms", "🖥️", "Expert"),
+            new("WPF", "🖥️", "Expert"),
+            new("UWP", "📱", "Expert"),
+            new("WinUI", "🖥️", "Expert"),
+            new("ASP.NET", "🌐", "Advanced"),
+            new("Blazor", "🌐", "Advanced"),
+            new("MAUI", "📱", "Proficient")
+        ]),
+
+        new("Databases",
+        [
+            new("SQL Server", "🗄️", "Advanced"),
+            new("MySQL", "🗄️", "Advanced"),
+            new("MongoDB", "🗄️", "Proficient"),
+            new("Azure SQL", "☁️", "Expert"),
+            new("Cosmos DB", "☁️", "Expert")
+        ]),
+
+        new("Tools & Technologies",
+        [
+            new("Git", "⚙️", "Expert"),
+            new("Visual Studio", "⚙️", "Expert"),
+            new("Azure CLI", "☁️", "Advanced"),
+            new("Key Vault", "🔐", "Expert"),
+            new("Blob Storage", "☁️", "Expert"),
+            new("Service Bus", "☁️", "Expert"),
+            new("Microsoft Entra", "🔐", "Intermediate"),
+            new("Office Suite", "📊", "Expert")
+        ])
     ];
 
     private List<Project> Projects { get; set; } =
@@ -154,6 +192,10 @@
         string Name,
         string Icon,
         string Level);
+
+    private record SkillCategory(
+        string Name,
+        List<Skill> Skills);
 
     private record Project(
         string Title,

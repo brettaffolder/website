@@ -245,6 +245,24 @@ body {
     letter-spacing: 0.05em;
 }
 
+.skill-category {
+    margin-bottom: 2.5rem;
+}
+
+    .skill-category:last-child {
+        margin-bottom: 0;
+    }
+
+.skill-category-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+    color: var(--text-dim);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -436,5 +454,10 @@ body {
 
     .resume-preview iframe {
         min-height: 450px;
+    }
+
+    .skill-category-title {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
     }
 }
