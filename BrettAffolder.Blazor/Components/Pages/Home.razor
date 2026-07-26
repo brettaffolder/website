@@ -14,6 +14,7 @@
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
+            <a href="#resume">Resume</a>
         </div>
         <div class="header-right">
             <a href="@GitHubUrl" target="_blank" rel="noopener" aria-label="GitHub">
@@ -85,6 +86,31 @@
         </div>
     </section>
 
+    <section id="resume" class="section">
+        <h2>Resume</h2>
+        <div class="resume-actions">
+            <a href="@ResumePath"
+               class="resume-download-btn"
+               download="Brett-Affolder-Resume.pdf">
+                Download ⬇
+            </a>
+            <a href="@ResumePath"
+               target="_blank"
+               rel="noopener"
+               class="resume-open-btn">
+                Open in new tab ↗
+            </a>
+        </div>
+        <div class="resume-preview">
+            <iframe src="@ResumePath"
+                    title="Brett Affolder — Resume"
+                    loading="lazy">
+                Your browser does not support embedded PDFs.
+                <a href="@ResumePath">Click here to view the resume.</a>
+            </iframe>
+        </div>
+    </section>
+
     <footer class="footer">
         <p>&copy; @DateTime.Now.Year @Name</p>
     </footer>
@@ -97,6 +123,7 @@
     private string Tagline { get; set; } = ".NET developer with 10+ years experience.";
     private string Email { get; set; } = "contact@brettaffolder.com";
     private string GitHubUrl { get; set; } = "https://github.com/brettaffolder";
+    private string ResumePath { get; set; } = "/resume.pdf";
     private string AboutText { get; set; } = """
     Software developer with 10+ years of experience designing and implementing custom business systems 
     across manufacturing environments. Specializes in full-stack .NET development, from database 
