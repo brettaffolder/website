@@ -48,22 +48,26 @@
 
     <section id="skills" class="section">
         <h2>Technical Skills</h2>
-        @foreach (var category in SkillCategories)
-        {
-            <div class="skill-category">
-                <h3 class="skill-category-title">@category.Name</h3>
-                <div class="skills-grid">
-                    @foreach (var skill in category.Skills)
-                    {
-                        <div class="skill-card">
-                            <span class="skill-icon">@skill.Icon</span>
-                            <strong>@skill.Name</strong>
-                            <span class="skill-level">@skill.Level</span>
-                        </div>
-                    }
+        <div class="skills-compact">
+            @foreach (var category in SkillCategories)
+            {
+                <div class="skill-category">
+                    <h3 class="skill-category-title">@category.Name</h3>
+                    <div class="skill-tags">
+                        @foreach (var skill in category.Skills)
+                        {
+                            <div class="skill-tag">
+                                <span class="skill-tag-icon">@skill.Icon</span>
+                                <div class="skill-tag-content">
+                                    <span class="skill-tag-name">@skill.Name</span>
+                                    <span class="skill-tag-level">@skill.Level</span>
+                                </div>
+                            </div>
+                        }
+                    </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
     </section>
 
     <section id="projects" class="section">
@@ -127,7 +131,7 @@
 @code {
     private string FirstName { get; set; } = "Brett";
     private string LastName { get; set; } = "Affolder";
-    private string AvatarUrl { get; set; } = "";
+    private string AvatarUrl { get; set; } = "/profile.jpg";
     private string Tagline { get; set; } = ".NET developer with 10+ years experience.";
     private string Email { get; set; } = "contact@brettaffolder.com";
     private string GitHubUrl { get; set; } = "https://github.com/brettaffolder";
